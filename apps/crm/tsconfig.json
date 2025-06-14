@@ -1,0 +1,7 @@
+{
+  "extends": "@suite-poc/typescript-config/vite.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
+}

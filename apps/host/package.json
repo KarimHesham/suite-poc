@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "host",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,13 +10,13 @@
     "lint": "eslint \"src/**/*.ts\""
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
+    "@suite-poc/ui-kit": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@suite-poc/eslint-config": "workspace:*",
+    "@suite-poc/typescript-config": "workspace:*",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^3.1.0",
