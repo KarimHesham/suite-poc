@@ -9,19 +9,11 @@
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.ts\""
   },
-  "dependencies": {
-    "@suite-poc/ui-kit": "workspace:*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
   "devDependencies": {
+    "@originjs/vite-plugin-federation": "^1.4.1",
     "@suite-poc/eslint-config": "workspace:*",
     "@suite-poc/typescript-config": "workspace:*",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^3.1.0",
-    "eslint": "^8.57.0",
-    "typescript": "5.5.4",
     "vite": "^5.1.4"
   }
 }

@@ -1,9 +1,10 @@
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 import "./style.css";
 import typescriptLogo from "/typescript.svg";
-import { Header, Counter } from "@suite-poc/ui-kit";
 
-const App = () => (
+const AppComponent = () => (
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -15,11 +16,21 @@ const App = () => (
         alt="TypeScript logo"
       />
     </a>
-    <Header title="CRM" />
     <div className="card">
-      <Counter />
+      <App />
     </div>
   </div>
 );
 
-createRoot(document.getElementById("app")!).render(<App />);
+// Mount the app in development
+if (import.meta.env.NODE_ENV !== "production") {
+  ReactDOM.createRoot(document.getElementById("app")!).render(
+    <React.StrictMode>
+      <AppComponent />
+    </React.StrictMode>
+  );
+}
+
+const CrmApp = AppComponent;
+
+export default CrmApp;

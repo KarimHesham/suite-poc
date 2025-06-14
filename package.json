@@ -1,16 +1,38 @@
 {
   "private": true,
+  "name": "suite-poc",
+  "packageManager": "pnpm@8.15.6",
   "scripts": {
+    "dev:host": "pnpm --filter ./apps/host dev",
+    "build:remotes": "pnpm --filter \"./apps/crm\" build && pnpm --filter \"./apps/cms\" build",
+    "build:host": "pnpm --filter \"./apps/host\" build",
+    "serve:remotes": "concurrently \"http-server apps/crm/dist -p 5001 --cors -c-1\" \"http-server apps/cms/dist -p 5002 --cors -c-1\"",
+    "dev:all": "pnpm run build:remotes && concurrently \"http-server apps/crm/dist -p 5001 --cors -c-1\" \"http-server apps/cms/dist -p 5002 --cors -c-1\" \"pnpm --filter ./apps/host dev\"",
     "build": "turbo run build",
+    "serve": "concurrently \"http-server apps/host/dist -p 5100 --cors -c-1\" \"http-server apps/crm/dist -p 5001 --cors -c-1\" \"http-server apps/cms/dist -p 5002 --cors -c-1\"",
+    "start": "pnpm run stop && pnpm run build && pnpm run serve",
+    "stop": "kill-port 5100 5001 5002",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
+    "http-server": "^14.1.1",
+    "kill-port": "^2.0.1",
     "prettier": "^3.2.5",
-    "turbo": "^2.5.4"
+    "serve": "^14.2.4",
+    "turbo": "^2.5.4",
+    "@suite-poc/eslint-config": "workspace:*",
+    "@suite-poc/typescript-config": "workspace:*",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "typescript": "5.5.4"
   },
-  "packageManager": "pnpm@8.15.6",
-  "name": "suite-poc"
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@suite-poc/ui-kit": "workspace:*"
+  }
 }
